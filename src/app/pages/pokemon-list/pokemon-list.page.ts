@@ -22,21 +22,24 @@ export class PokemonListPage implements OnInit {
   }
 
   private _getPokemonsFirstPage() {
-    return new Promise(
-      async (resolve) => {
-        try {
-          const response: any = await this._pokemonService.getPokemonListed(0)
-            .toPromise();
-          this.pokemons = response.results;
-        }
-        catch (error) {
-          console.log('error in loading pokemons');
-        }
-        finally {
-          this.loading = false;
-          console.log(this.loading);          
-          resolve();
-        }
-      });
+    setTimeout(() => {
+
+      return new Promise(
+        async (resolve) => {
+          try {
+            const response: any = await this._pokemonService.getPokemonListed(0)
+              .toPromise();
+            this.pokemons = response.results;
+          }
+          catch (error) {
+            console.log('error in loading pokemons');
+          }
+          finally {
+            this.loading = false;
+            console.log(this.loading);
+            resolve();
+          }
+        });
+    }, 10000)
   }
 }

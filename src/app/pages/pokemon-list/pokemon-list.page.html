@@ -16,7 +16,7 @@
 
     <div id="container">
         <ng-container *ngIf="loading; else noLoading">
-            caricamento...
+            <app-skeleton-text> </app-skeleton-text>
         </ng-container>
         <ng-template #noLoading>
             <strong class="capitalize">response</strong>
