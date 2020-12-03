@@ -60,6 +60,10 @@ export class PokemonService {
         return this._http.get<Pokemon>(`${environment.apiUrl}pokemon/${idOrName}`);
     }
 
+    public getPokemonListed(page: number): Observable<Pokemon[]> {
+        return this._http.get<Pokemon[]>(`${environment.apiUrl}pokemon/?limit=${environment.listLimit}&offset=${page}`);
+    }
+
     public getPokemonLocationArea(idOrName: number | string): Observable<LocationAreaEncounter> {
         return this._http.get<LocationAreaEncounter>(`${environment.apiUrl}pokemon/${idOrName}/encounters`);
     }

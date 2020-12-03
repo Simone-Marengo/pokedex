@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{ folder }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">{{ folder }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div id="container">
+        <ng-container *ngIf="loading; else noLoading">
+            caricamento...
+        </ng-container>
+        <ng-template #noLoading>
+            <strong class="capitalize">response</strong>
+            <ng-container *ngIf="pokemons && pokemons.length; else noPokemons">
+                <ion-list>
+                    <ion-item *ngFor="let pokemon of pokemons">
+                        <ion-label>{{ pokemon.name }}</ion-label>
+                    </ion-item>
+                </ion-list>
+            </ng-container>
+            <ng-template #noPokemons>
+                <strong class="capitalize">no pokemon loaded</strong>
+            </ng-template>
+        </ng-template>
+    </div>
+</ion-content>
