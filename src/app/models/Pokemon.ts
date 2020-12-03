@@ -5,6 +5,7 @@ import { PokemonMove } from './PokemonMove';
 import { PokemonSprites } from './PokemonSprites';
 import { PokemonStat } from './PokemonStat';
 import { PokemonType } from './PokemonType';
+import { VersionGameIndex } from './VersionGameIndex';
 
 export class Pokemon {
     id: number;
