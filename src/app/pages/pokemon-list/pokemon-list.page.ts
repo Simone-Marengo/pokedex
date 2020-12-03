@@ -12,6 +12,7 @@ export class PokemonListPage implements OnInit {
   public folder: string = 'Pokemon list';
   public loading: boolean = true;
   public pokemons: Pokemon[] = [];
+  public noMoreResults: boolean = false;
 
   constructor(
     private _pokemonService: PokemonService
@@ -22,24 +23,47 @@ export class PokemonListPage implements OnInit {
   }
 
   private _getPokemonsFirstPage() {
-    setTimeout(() => {
+    return new Promise(
+      async (resolve) => {
+        try {
+          const response: any = await this._pokemonService
+            .getPokemonListed(0)
+            .toPromise();
+          this.pokemons = response.results;
+        }
+        catch (error) {
+          console.log('error in loading pokemons');
+        }
+        finally {
+          this.loading = false;
+          resolve();
+        }
+      });
+  }
 
-      return new Promise(
-        async (resolve) => {
-          try {
-            const response: any = await this._pokemonService.getPokemonListed(0)
+  public loadPokemonsListed(event) {
+    return new Promise(
+      async (resolve) => {
+        try {
+          if (!this.noMoreResults) {
+            const response: any = await this._pokemonService
+              .getPokemonListed(this.pokemons.length)
               .toPromise();
-            this.pokemons = response.results;
+            if (response.results && response.results.length) {
+              this.pokemons = this.pokemons.concat(response.results);
+            } else {
+              this.noMoreResults = true;
+            }
           }
-          catch (error) {
-            console.log('error in loading pokemons');
-          }
-          finally {
-            this.loading = false;
-            console.log(this.loading);
-            resolve();
-          }
-        });
-    }, 10000)
+        }
+        catch (error) {
+          console.log('error in loading pokemons');
+        }
+        finally {
+          this.loading = false;
+          event.target.complete();
+          resolve();
+        }
+      });
   }
 }
