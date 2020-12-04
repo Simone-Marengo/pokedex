@@ -9,6 +9,7 @@ import { MoveCategory } from '../models/MoveCategory';
 import { MoveDamageClass } from '../models/MoveDamageClass';
 import { MoveLearnMethod } from '../models/MoveLearnMethod';
 import { MoveTarget } from '../models/MoveTarget';
+import { NamesAPIResourseList } from '../models/NamedAPIResourceList';
 
 @Injectable({
     providedIn: 'root'
@@ -23,8 +24,8 @@ export class MovesService {
         return this._http.get<Move>(`${environment.apiUrl}move/${idOrName}`);
     }
 
-    public getMoveListed(page: number): Observable<Move[]> {
-        return this._http.get<Move[]>(`${environment.apiUrl}move/?limit=${environment.listLimit}&offset=${page}`);
+    public getMoveListed(page: number): Observable<NamesAPIResourseList> {
+        return this._http.get<NamesAPIResourseList>(`${environment.apiUrl}move/?limit=${environment.listLimit}&offset=${page}`);
     }
 
     public getMoveAilment(idOrName: number | string): Observable<MoveAilment> {

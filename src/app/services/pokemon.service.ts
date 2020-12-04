@@ -8,6 +8,7 @@ import { EggGroup } from '../models/EggGroup';
 import { Gender } from '../models/Gender';
 import { GrowthRate } from '../models/GrowthRate';
 import { LocationAreaEncounter } from '../models/LocationAreaEncounter';
+import { NamesAPIResourseList } from '../models/NamedAPIResourceList';
 import { Nature } from '../models/Nature';
 import { PokeathlonStat } from '../models/PokeathlonStat';
 import { Pokemon } from '../models/Pokemon';
@@ -60,8 +61,8 @@ export class PokemonService {
         return this._http.get<Pokemon>(`${environment.apiUrl}pokemon/${idOrName}`);
     }
 
-    public getPokemonListed(page: number): Observable<Pokemon[]> {
-        return this._http.get<Pokemon[]>(`${environment.apiUrl}pokemon/?limit=${environment.listLimit}&offset=${page}`);
+    public getPokemonListed(page: number): Observable<NamesAPIResourseList> {
+        return this._http.get<NamesAPIResourseList>(`${environment.apiUrl}pokemon/?limit=${environment.listLimit}&offset=${page}`);
     }
 
     public getPokemonLocationArea(idOrName: number | string): Observable<LocationAreaEncounter> {

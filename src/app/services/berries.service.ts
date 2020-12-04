@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Berry } from '../models/Berry';
 import { BerryFirmness } from '../models/BerryFirmness';
 import { BerryFlavor } from '../models/BerryFlavor';
+import { NamesAPIResourseList } from '../models/NamedAPIResourceList';
 
 @Injectable({
     providedIn: 'root'
@@ -19,8 +20,8 @@ export class BerriesService {
         return this._http.get<Berry>(`${environment.apiUrl}berry/${idOrName}`);
     }
 
-    public getBerriesListed(page: number): Observable<Berry[]> {
-        return this._http.get<Berry[]>(`${environment.apiUrl}berry/?limit=${environment.listLimit}&offset=${page}`);
+    public getBerriesListed(page: number): Observable<NamesAPIResourseList> {
+        return this._http.get<NamesAPIResourseList>(`${environment.apiUrl}berry/?limit=${environment.listLimit}&offset=${page}`);
     }
 
     public getBerryFirmness(idOrName: number | string): Observable<BerryFirmness> {

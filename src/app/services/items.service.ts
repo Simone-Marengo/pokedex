@@ -7,6 +7,7 @@ import { Item } from '../models/Item';
 import { ItemAttribute } from '../models/ItemAttribute';
 import { ItemCategory } from '../models/ItemCategory';
 import { ItemPocket } from '../models/ItemPocket';
+import { NamesAPIResourseList } from '../models/NamedAPIResourceList';
 
 @Injectable({
     providedIn: 'root'
@@ -21,8 +22,8 @@ export class ItemsService {
         return this._http.get<Item>(`${environment.apiUrl}item/${idOrName}`);
     }
 
-    public getItemsListed(page: number): Observable<Item[]> {
-        return this._http.get<Item[]>(`${environment.apiUrl}item/?limit=${environment.listLimit}&offset=${page}`);
+    public getItemsListed(page: number): Observable<NamesAPIResourseList> {
+        return this._http.get<NamesAPIResourseList>(`${environment.apiUrl}item/?limit=${environment.listLimit}&offset=${page}`);
     }
 
     public getItemAttribute(idOrName: number | string): Observable<ItemAttribute> {
