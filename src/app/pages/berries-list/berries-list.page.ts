@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from 'src/app/models/Pokemon';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { Berry } from 'src/app/models/Berry';
+import { BerriesService } from 'src/app/services/berries.service';
 
 @Component({
-  selector: 'app-pokemon-list',
-  templateUrl: './pokemon-list.page.html',
-  styleUrls: ['./pokemon-list.page.scss'],
+  selector: 'app-berries-list',
+  templateUrl: './berries-list.page.html',
+  styleUrls: ['./berries-list.page.scss'],
 })
-export class PokemonListPage implements OnInit {
+export class BerriesListPage implements OnInit {
 
-  public folder: string = 'Pokemon list';
+  public folder: string = 'Berries list';
   public loading: boolean = true;
-  public pokemons: Pokemon[] = [];
+  public berries: Berry[] = [];
   public noMoreResults: boolean = false;
 
   constructor(
-    private _pokemonService: PokemonService
+    private _berriesService: BerriesService
   ) { }
 
   ngOnInit() {
@@ -27,11 +27,11 @@ export class PokemonListPage implements OnInit {
       async (resolve) => {
         try {
           if (!this.noMoreResults) {
-            const response: any = await this._pokemonService
-              .getPokemonListed(pageNumber ? pageNumber : this.pokemons.length)
+            const response: any = await this._berriesService
+              .getBerriesListed(pageNumber ? pageNumber : this.berries.length)
               .toPromise();
             if (response.results && response.results.length) {
-              this.pokemons = this.pokemons.concat(response.results);
+              this.berries = this.berries.concat(response.results);
             } else {
               this.noMoreResults = true;
             }

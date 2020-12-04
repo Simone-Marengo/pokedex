@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SkeletonTextComponent } from './skeleton-text.component';
 
-
-
 @NgModule({
     imports: [
         CommonModule,

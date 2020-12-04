@@ -18,9 +18,14 @@ export class AppComponent implements OnInit {
       icon: 'home'
     },
     {
-      title: 'Lista pokemon',
+      title: 'Pokemon List',
       url: 'pokemon-list',
       // icon: 'mail'
+    },
+    {
+      title: 'Berris List',
+      url: 'berries-list',
+      icon: ''
     }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

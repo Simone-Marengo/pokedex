@@ -19,6 +19,10 @@ export class BerriesService {
         return this._http.get<Berry>(`${environment.apiUrl}berry/${idOrName}`);
     }
 
+    public getBerriesListed(page: number): Observable<Berry[]> {
+        return this._http.get<Berry[]>(`${environment.apiUrl}berry/?limit=${environment.listLimit}&offset=${page}`);
+    }
+
     public getBerryFirmness(idOrName: number | string): Observable<BerryFirmness> {
         return this._http.get<BerryFirmness>(`${environment.apiUrl}berry-firmness/${idOrName}`);
     }

@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'pokemon-list',
     loadChildren: () => import('./pages/pokemon-list/pokemon-list.module').then(m => m.PokemonListPageModule)
+  },  {
+    path: 'berries-list',
+    loadChildren: () => import('./pages/berries-list/berries-list.module').then( m => m.BerriesListPageModule)
   }
+
 ];
 
 @NgModule({
