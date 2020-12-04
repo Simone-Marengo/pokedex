@@ -1,0 +1,8 @@
+{
+  "TOASTS": {
+    "berries_loading": "Error in loading berries",
+    "items_loading": "Error in loading items",
+    "moves_loading": "Error in loading moves",
+    "pokemon_loading": "Error in loading pokemon"
+  }
+}

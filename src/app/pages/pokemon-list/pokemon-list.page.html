@@ -22,11 +22,13 @@
             <ng-container *ngIf="pokemons && pokemons.length; else noResults">
                 <ion-list>
                     <ion-item *ngFor="let pokemon of pokemons">
-                        <ion-label>{{ pokemon.name }}</ion-label>
+                        <ion-label>{{ pokemon.name | titlecase}}</ion-label>
                     </ion-item>
                 </ion-list>
                 <ng-template #noResults>
-                    <strong class="capitalize">no pokemon loaded</strong>
+                    <strong class="capitalize">
+                        {{"GENERICS.no_data_loaded" | translate}}
+                    </strong>
                 </ng-template>
             </ng-container>
         </ng-template>
@@ -34,7 +36,7 @@
             <ion-infinite-scroll-content loadingSpinner="dots" loadingText="Loading more data...">
                 <ng-container *ngIf="noMoreResults">
                     <strong>
-                        there's no more results that can be loaded!
+                        {{"GENERICS.no_more_results" | translate}}
                     </strong>
                 </ng-container>
             </ion-infinite-scroll-content>
