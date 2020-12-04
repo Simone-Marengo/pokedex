@@ -19,35 +19,16 @@ export class PokemonListPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._getPokemonsFirstPage();
+    this.loadPokemonsListed(0, null);
   }
 
-  private _getPokemonsFirstPage() {
-    return new Promise(
-      async (resolve) => {
-        try {
-          const response: any = await this._pokemonService
-            .getPokemonListed(0)
-            .toPromise();
-          this.pokemons = response.results;
-        }
-        catch (error) {
-          console.log('error in loading pokemons');
-        }
-        finally {
-          this.loading = false;
-          resolve();
-        }
-      });
-  }
-
-  public loadPokemonsListed(event) {
+  public loadPokemonsListed(pageNumber: number, event) {
     return new Promise(
       async (resolve) => {
         try {
           if (!this.noMoreResults) {
             const response: any = await this._pokemonService
-              .getPokemonListed(this.pokemons.length)
+              .getPokemonListed(pageNumber ? pageNumber : this.pokemons.length)
               .toPromise();
             if (response.results && response.results.length) {
               this.pokemons = this.pokemons.concat(response.results);
@@ -61,7 +42,9 @@ export class PokemonListPage implements OnInit {
         }
         finally {
           this.loading = false;
-          event.target.complete();
+          if (event) {
+            event.target.complete();
+          }
           resolve();
         }
       });
