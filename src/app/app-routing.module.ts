@@ -14,9 +14,14 @@ const routes: Routes = [
   {
     path: 'pokemon-list',
     loadChildren: () => import('./pages/pokemon-list/pokemon-list.module').then(m => m.PokemonListPageModule)
-  },  {
+  },
+  {
     path: 'berries-list',
     loadChildren: () => import('./pages/berries-list/berries-list.module').then( m => m.BerriesListPageModule)
+  },
+  {
+    path: 'items-list',
+    loadChildren: () => import('./pages/items-list/items-list.module').then( m => m.ItemsListPageModule)
   }
 
 ];

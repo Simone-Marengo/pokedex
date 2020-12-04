@@ -21,6 +21,10 @@ export class ItemsService {
         return this._http.get<Item>(`${environment.apiUrl}item/${idOrName}`);
     }
 
+    public getItemsListed(page: number): Observable<Item[]> {
+        return this._http.get<Item[]>(`${environment.apiUrl}item/?limit=${environment.listLimit}&offset=${page}`);
+    }
+
     public getItemAttribute(idOrName: number | string): Observable<ItemAttribute> {
         return this._http.get<ItemAttribute>(`${environment.apiUrl}item-attribute/${idOrName}`);
     }
