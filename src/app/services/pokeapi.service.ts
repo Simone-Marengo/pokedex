@@ -31,4 +31,8 @@ export class PokeapiService {
   public getLanguage(idOrName: number | string): Observable<Language> {
     return this._http.get<Language>(`${environment.apiUrl}language/${idOrName}`);
   }
+
+  public launchAPIByUrl(url: string): Observable<any> {
+    return this._http.get<any>(url);
+  }
 }

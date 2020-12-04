@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{ folder }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">{{ folder }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div id="container">
+        <ng-container *ngIf="loading; else noLoading">
+            <app-skeleton-text> </app-skeleton-text>
+        </ng-container>
+        <ng-template #noLoading>
+            <ng-container *ngIf="moves && moves.length; else noResults">
+                <ion-list>
+                    <ion-item *ngFor="let item of moves">
+                        <ion-label>{{ item.name }}</ion-label>
+                    </ion-item>
+                </ion-list>
+                <ng-template #noResults>
+                    <strong class="capitalize">no moves loaded</strong>
+                </ng-template>
+            </ng-container>
+        </ng-template>
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadResultsListed(null ,$event)">
+            <ion-infinite-scroll-content loadingSpinner="dots" loadingText="Loading more data...">
+                <ng-container *ngIf="noMoreResults">
+                    <strong>
+                    there's no more results that can be loaded!
+                </strong>
+                </ng-container>
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div>
+</ion-content>

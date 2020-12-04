@@ -23,6 +23,10 @@ export class MovesService {
         return this._http.get<Move>(`${environment.apiUrl}move/${idOrName}`);
     }
 
+    public getMoveListed(page: number): Observable<Move[]> {
+        return this._http.get<Move[]>(`${environment.apiUrl}move/?limit=${environment.listLimit}&offset=${page}`);
+    }
+
     public getMoveAilment(idOrName: number | string): Observable<MoveAilment> {
         return this._http.get<MoveAilment>(`${environment.apiUrl}move-ailment/${idOrName}`);
     }
