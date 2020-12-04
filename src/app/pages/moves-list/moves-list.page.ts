@@ -64,3 +64,4 @@ export class MovesListPage implements OnInit {
     });
   }
 }
+
