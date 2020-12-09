@@ -17,15 +17,19 @@ const routes: Routes = [
   },
   {
     path: 'berries-list',
-    loadChildren: () => import('./pages/berries-list/berries-list.module').then( m => m.BerriesListPageModule)
+    loadChildren: () => import('./pages/berries-list/berries-list.module').then(m => m.BerriesListPageModule)
   },
   {
     path: 'items-list',
-    loadChildren: () => import('./pages/items-list/items-list.module').then( m => m.ItemsListPageModule)
+    loadChildren: () => import('./pages/items-list/items-list.module').then(m => m.ItemsListPageModule)
   },
   {
     path: 'moves-list',
-    loadChildren: () => import('./pages/moves-list/moves-list.module').then( m => m.MovesListPageModule)
+    loadChildren: () => import('./pages/moves-list/moves-list.module').then(m => m.MovesListPageModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/page-not-found/page-not-found.module').then(m => m.PageNotFoundPageModule)
   }
 
 ];

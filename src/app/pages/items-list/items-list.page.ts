@@ -5,9 +5,9 @@ import { ItemsService } from "src/app/services/items.service";
 import { CustomToastsService } from "src/app/shared/services/custom-toasts.service";
 
 @Component({
-  selector: "app-items-list",
-  templateUrl: "./items-list.page.html",
-  styleUrls: ["./items-list.page.scss"],
+  selector: 'app-items-list',
+  templateUrl: './items-list.page.html',
+  styleUrls: ['./items-list.page.scss'],
 })
 export class ItemsListPage implements OnInit {
   public folder: string = "Items list";
@@ -18,7 +18,7 @@ export class ItemsListPage implements OnInit {
   constructor(
     private _itemsService: ItemsService,
     private _toastsService: CustomToastsService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadResultsListed(0, null);

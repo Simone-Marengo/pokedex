@@ -1,14 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { ToastController } from "@ionic/angular";
 import { Berry } from "src/app/models/Berry";
 import { NamesAPIResourseList } from "src/app/models/NamedAPIResourceList";
 import { BerriesService } from "src/app/services/berries.service";
 import { CustomToastsService } from "src/app/shared/services/custom-toasts.service";
 
 @Component({
-  selector: "app-berries-list",
-  templateUrl: "./berries-list.page.html",
-  styleUrls: ["./berries-list.page.scss"],
+  selector: 'app-berries-list',
+  templateUrl: './berries-list.page.html',
+  styleUrls: ['./berries-list.page.scss'],
 })
 export class BerriesListPage implements OnInit {
   public folder: string = "Berries list";
@@ -19,7 +18,7 @@ export class BerriesListPage implements OnInit {
   constructor(
     private _berriesService: BerriesService,
     private _toastsService: CustomToastsService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadResultsListed(0, null);

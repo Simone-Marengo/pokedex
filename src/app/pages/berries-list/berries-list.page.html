@@ -27,14 +27,16 @@
                 </ion-list>
             </ng-container>
             <ng-template #noResults>
-                <strong class="capitalize">no berries loaded</strong>
+                <strong class="capitalize">
+                    {{"GENERICS.no_data_loaded" | translate}}
+                </strong>
             </ng-template>
         </ng-template>
         <ion-infinite-scroll threshold="100px" (ionInfinite)="loadResultsListed(null ,$event)">
             <ion-infinite-scroll-content loadingSpinner="dots" loadingText="Loading more data...">
                 <ng-container *ngIf="noMoreResults">
                     <strong>
-                        there's no more results that can be loaded!
+                        {{"GENERICS.no_more_results" | translate}}
                     </strong>
                 </ng-container>
             </ion-infinite-scroll-content>

@@ -5,11 +5,12 @@ import { Platform } from "@ionic/angular";
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({
-  selector: "app-root",
-  templateUrl: "app.component.html",
-  styleUrls: ["app.component.scss"],
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+
   public selectedIndex = 0;
   public appPages: MenuItem[] = [
     {
@@ -52,7 +53,8 @@ export class AppComponent implements OnInit {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this._translateService.setDefaultLang("en");
+      this._translateService.setDefaultLang('en');
+      this._translateService.use('en');
       this.splashScreen.hide();
     });
   }

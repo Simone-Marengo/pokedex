@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { ToastController } from "@ionic/angular";
 import { TranslateService } from "@ngx-translate/core";
 import { NamesAPIResourseList } from "src/app/models/NamedAPIResourceList";
 import { Pokemon } from "src/app/models/Pokemon";
@@ -7,9 +6,9 @@ import { PokemonService } from "src/app/services/pokemon.service";
 import { CustomToastsService } from "src/app/shared/services/custom-toasts.service";
 
 @Component({
-  selector: "app-pokemon-list",
-  templateUrl: "./pokemon-list.page.html",
-  styleUrls: ["./pokemon-list.page.scss"],
+  selector: 'app-pokemon-list',
+  templateUrl: './pokemon-list.page.html',
+  styleUrls: ['./pokemon-list.page.scss'],
 })
 export class PokemonListPage implements OnInit {
   public folder: string = "Pokemon list";
@@ -21,7 +20,7 @@ export class PokemonListPage implements OnInit {
     private _pokemonService: PokemonService,
     private _toastsService: CustomToastsService,
     public tranlateService: TranslateService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadResultsListed(0, null);
