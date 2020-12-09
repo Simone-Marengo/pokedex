@@ -22,7 +22,9 @@
             <ng-container *ngIf="pokemons && pokemons.length; else noResults">
                 <ion-list>
                     <ion-item *ngFor="let pokemon of pokemons">
-                        <ion-label>{{ pokemon.name | titlecase}}</ion-label>
+                        <ion-label [routerLink]="['detail/' + pokemon.id]" routerLinkActive="router-link-active">
+                            {{ pokemon.name | titlecase}}
+                        </ion-label>
                     </ion-item>
                 </ion-list>
                 <ng-template #noResults>

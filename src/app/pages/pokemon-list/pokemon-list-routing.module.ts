@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
+import { RouterModule, Routes } from '@angular/router';
 import { PokemonListPage } from './pokemon-list.page';
+
 
 const routes: Routes = [
   {
     path: '',
     component: PokemonListPage
+  },
+  {
+    path: 'detail/:id',
+    loadChildren: () => import('./pokemon-detail/pokemon-detail-routing.module').then(m => m.PokemonDetailPageRoutingModule)
   }
 ];
 
@@ -14,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PokemonListPageRoutingModule {}
+export class PokemonListPageRoutingModule { }
