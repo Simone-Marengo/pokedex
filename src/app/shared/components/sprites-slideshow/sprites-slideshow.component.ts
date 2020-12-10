@@ -11,16 +11,28 @@ export class SpritesSlideshowComponent implements OnInit {
   @Input('sprites') sprites: PokemonSprites;
   @Input('image') singleImage: string;
 
+  public spritesLables = ['back_default', 'back_female', 'back_shiny', 'back_shiny_female', 'front_default', 'front_female', 'front_shiny', 'front_shiny_female'];
+
   public spritesEntries: Array<any> = [];
+  public spriteIndex: number = 0;
 
   constructor() { }
 
   ngOnInit() {
     if (this.showSprites()) {
-      this.spritesEntries = Object.entries(this.sprites);
+      const entries = Object.entries(this.sprites)
+      this.spritesEntries = entries.filter(entry =>
+        entry[1] !== null && this.spritesLables.includes(entry[0])
+      );
     }
   }
 
   public showSprites = (): boolean => this.sprites && !this.singleImage;
+  public showSingleImage = (): boolean => this.singleImage && this.singleImage != null;
+
+  public goBack = () => this.spriteIndex === 0 ? null : this.spriteIndex--;
+  public goForward = () => this.spriteIndex === (this.spritesEntries.length - 1) ? null : this.spriteIndex++;
+  public disableBackBtn = () => this.spriteIndex === 0;
+  public disableForwardBtn = () => this.spriteIndex === (this.spritesEntries.length - 1);
 
 }

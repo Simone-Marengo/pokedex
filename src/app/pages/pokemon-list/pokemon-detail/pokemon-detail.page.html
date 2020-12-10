@@ -27,7 +27,6 @@
                             <ion-text color="dark">
                                 <h1>#{{pokemon.id}}</h1>
                             </ion-text>
-                            <app-sprites-slideshow [sprites]="pokemon.sprites"> </app-sprites-slideshow>
                         </div>
                     </ion-col>
                     <ion-col size="3">
@@ -37,6 +36,9 @@
                     </ion-col>
                 </ion-row>
             </ion-grid>
+            <div class="ion-padding-horizontal">
+                <app-sprites-slideshow [sprites]="pokemon.sprites"> </app-sprites-slideshow>
+            </div>
 
         </ng-template>
     </div>

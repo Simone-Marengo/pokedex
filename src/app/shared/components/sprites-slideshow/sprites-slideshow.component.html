@@ -1,6 +1,42 @@
-<ng-container *ngFor="let spriteObject of spritesEntries">
-  <ng-container *ngIf="spriteObject[2] !== null">
+<!-- <ng-container *ngFor="let spriteObject of spritesEntries">
+  <ng-container *ngIf="spriteObject[1] !== null">
     {{spriteObject[0]}}
     <img [src]="spriteObject[1]" />
   </ng-container>
+</ng-container> -->
+<ng-container *ngIf="showSprites(); else noSprites">
+
+  <div class="slideShowContainer">
+    <div id="backBtn">
+      <ion-button fill="clear" slot="icon-only" (click)="goBack()" [disabled]="disableBackBtn()">
+        <ion-icon name="caret-back-outline"> </ion-icon>
+      </ion-button>
+    </div>
+
+    <div id="slideShowImgContainer">
+      <div class="slideShowImg" [ngStyle]="{
+          'background-image': 'url(' + spritesEntries[spriteIndex][1] +')'
+      }"> </div>
+      <div class="ion-text-center">
+        {{spritesEntries[spriteIndex][0]}}
+      </div>
+    </div>
+
+    <div id="forwardBtn">
+      <ion-button fill="clear" slot="icon-only" (click)="goForward()" [disabled]="disableForwardBtn()">
+        <ion-icon name="caret-forward-outline"> </ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
 </ng-container>
+<ng-template #noSprites>
+
+  <ng-container *ngIf="showSingleImage(); else noSingleImage">
+    <div class="slideShowImg" [ngStyle]="{'backgound': 'url(' + singleImage +')'}"> </div>
+  </ng-container>
+  <ng-template #noSingleImage>
+    {{'SLIDESHOW.noImagesToShow' | translate}}
+  </ng-template>
+
+</ng-template>

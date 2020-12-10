@@ -1,0 +1,28 @@
+.slideShowImg {
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.slideShowContainer {
+  display: inline-flex;
+  width: 100%;
+  #backBtn,
+  #forwardBtn {
+    width: 25%;
+    position: relative;
+    ion-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  #slideShowImgContainer {
+    width: 50%;
+    .slideShowImg {
+      width: 100%;
+    }
+  }
+}
