@@ -27,7 +27,7 @@
                             <ion-text color="dark">
                                 <h1>#{{pokemon.id}}</h1>
                             </ion-text>
-                            <div [ngStyle]="{'background': 'url(' + pokemon.sprites.front_default + ')'}"> </div>
+                            <app-sprites-slideshow [sprites]="pokemon.sprites"> </app-sprites-slideshow>
                         </div>
                     </ion-col>
                     <ion-col size="3">

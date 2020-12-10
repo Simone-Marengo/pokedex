@@ -1,0 +1,6 @@
+<ng-container *ngFor="let spriteObject of spritesEntries">
+  <ng-container *ngIf="spriteObject[2] !== null">
+    {{spriteObject[0]}}
+    <img [src]="spriteObject[1]" />
+  </ng-container>
+</ng-container>
