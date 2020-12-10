@@ -1,19 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
+import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/services/shared-module.module';
 import { PageNotFoundPageRoutingModule } from './page-not-found-routing.module';
-
 import { PageNotFoundPage } from './page-not-found.page';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
     IonicModule,
-    PageNotFoundPageRoutingModule
+    PageNotFoundPageRoutingModule,
+    TranslateModule.forChild(),
+    SharedModule
   ],
   declarations: [PageNotFoundPage]
 })

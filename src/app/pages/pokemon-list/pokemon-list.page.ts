@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { TranslateService } from "@ngx-translate/core";
 import { NamesAPIResourseList } from "src/app/models/NamedAPIResourceList";
 import { Pokemon } from "src/app/models/Pokemon";
 import { PokemonService } from "src/app/services/pokemon.service";
@@ -18,8 +17,7 @@ export class PokemonListPage implements OnInit {
 
   constructor(
     private _pokemonService: PokemonService,
-    private _toastsService: CustomToastsService,
-    public tranlateService: TranslateService
+    private _toastsService: CustomToastsService
   ) { }
 
   ngOnInit() {

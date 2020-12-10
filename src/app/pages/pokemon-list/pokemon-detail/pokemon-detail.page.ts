@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Pokemon } from 'src/app/models/Pokemon';
+import { PokemonService } from 'src/app/services/pokemon.service';
+import { CustomToastsService } from 'src/app/shared/services/custom-toasts.service';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -6,10 +10,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-detail.page.scss'],
 })
 export class PokemonDetailPage implements OnInit {
+  public folder: string = "";
+  public loading: boolean = true;
+  public pokemon: Pokemon;
 
-  constructor() { }
+  constructor(
+    private _route: ActivatedRoute,
+    private _pokemonService: PokemonService,
+    private _toastsService: CustomToastsService
+  ) { }
 
   ngOnInit() {
+    this._loadData();
+  }
+
+  private _loadData() {
+    try {
+      this._route.params.subscribe(
+        async params => {
+          if (params) {
+            const { id } = params;
+            const pokemonLoaded = await this._pokemonService
+              .getPokemon(id)
+              .toPromise();
+            this.pokemon = pokemonLoaded;
+            this.folder = `Detail of ${this.pokemon.name}`;
+          }
+        });
+    }
+    catch (error) {
+      this._toastsService.loadingErrorToast("TOASTS.pokemon_loading");
+    } finally {
+      this.loading = false;
+    }
   }
 
 }

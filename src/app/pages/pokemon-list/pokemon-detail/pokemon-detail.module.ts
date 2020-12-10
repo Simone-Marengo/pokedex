@@ -1,20 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { IonicModule } from '@ionic/angular';
-
+import { NgModule } from "@angular/core";
+import { IonicModule } from "@ionic/angular";
+import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/services/shared-module.module';
 import { PokemonDetailPageRoutingModule } from './pokemon-detail-routing.module';
-
 import { PokemonDetailPage } from './pokemon-detail.page';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
     IonicModule,
-    PokemonDetailPageRoutingModule
+    PokemonDetailPageRoutingModule,
+    TranslateModule.forChild(),
+    SharedModule
   ],
   declarations: [PokemonDetailPage]
 })
-export class PokemonDetailPageModule {}
+export class PokemonDetailPageModule { }
