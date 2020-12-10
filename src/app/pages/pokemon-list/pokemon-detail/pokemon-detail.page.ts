@@ -30,18 +30,16 @@ export class PokemonDetailPage implements OnInit {
         async params => {
           if (params) {
             const { id } = params;
-            const pokemonLoaded = await this._pokemonService
+            this.pokemon = await this._pokemonService
               .getPokemon(id)
               .toPromise();
-            this.pokemon = pokemonLoaded;
             this.folder = `Detail of ${this.pokemon.name}`;
+            this.loading = false;
           }
         });
     }
     catch (error) {
       this._toastsService.loadingErrorToast("TOASTS.pokemon_loading");
-    } finally {
-      this.loading = false;
     }
   }
 

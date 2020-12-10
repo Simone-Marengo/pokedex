@@ -10,7 +10,7 @@ import { PokemonListPage } from "./pokemon-list.page";
     IonicModule,
     PokemonListPageRoutingModule,
     TranslateModule.forChild(),
-    SharedModule
+    SharedModule,
   ],
   declarations: [PokemonListPage],
 })
