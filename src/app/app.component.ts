@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
       // icon: 'mail'
     },
     {
-      title: "Berris List",
+      title: "Berries List",
       url: "berries-list",
       icon: "",
     },
