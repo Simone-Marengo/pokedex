@@ -22,7 +22,7 @@
 
             <ion-list>
                 <ion-item lines="none" *ngFor="let detailLabel of detailLabels">
-                    {{detailLabel | titlecase}}:
+                    {{ detailLabel | titlecase }}:
                     <ion-label slot="end">
                         <h1>{{pokemon[detailLabel]}}</h1>
                     </ion-label>
@@ -38,6 +38,17 @@
                 <app-sprites-slideshow [sprites]="pokemon.sprites"> </app-sprites-slideshow>
             </div>
 
+            <ion-list>
+                <ion-list-header>
+                    {{ 'ability/ies' | titlecase }}
+                </ion-list-header>
+                <ion-item lines="none" detail="true" (click)="gotoPokemonAbilityDetail(abilityItem)"
+                    *ngFor="let abilityItem of pokemon.abilities">
+                    <ion-label slot="end">
+                        <h1>{{abilityItem.ability.name}}</h1>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
         </ng-template>
     </div>
 </ion-content>

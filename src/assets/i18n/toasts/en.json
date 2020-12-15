@@ -3,6 +3,7 @@
     "berries_loading": "Error in loading berries",
     "items_loading": "Error in loading items",
     "moves_loading": "Error in loading moves",
-    "pokemon_loading": "Error in loading pokemon"
+    "pokemon_loading": "Error in loading pokemon",
+    "ability_loading_error": "Error in loading ability"
   }
 }

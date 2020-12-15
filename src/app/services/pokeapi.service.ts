@@ -35,4 +35,5 @@ export class PokeapiService {
   public launchAPIByUrl(url: string): Observable<any> {
     return this._http.get<any>(url);
   }
+
 }

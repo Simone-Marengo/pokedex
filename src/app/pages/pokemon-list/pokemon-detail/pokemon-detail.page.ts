@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Pokemon } from 'src/app/models/Pokemon';
+import { PokemonAbility } from 'src/app/models/PokemonAbility';
 import { PokemonService } from 'src/app/services/pokemon.service';
+import { AbilityDetailComponent } from 'src/app/shared/components/ability-detail/ability-detail.component';
 import { CustomToastsService } from 'src/app/shared/services/custom-toasts.service';
 
 @Component({
@@ -20,7 +23,8 @@ export class PokemonDetailPage implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _pokemonService: PokemonService,
-    private _toastsService: CustomToastsService
+    private _toastsService: CustomToastsService,
+    private _modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -44,6 +48,16 @@ export class PokemonDetailPage implements OnInit {
     catch (error) {
       this._toastsService.loadingErrorToast("TOASTS.pokemon_loading");
     }
+  }
+
+  public async gotoPokemonAbilityDetail(abilityItem: PokemonAbility) {
+    const modal = await this._modalController.create({
+      component: AbilityDetailComponent,
+      componentProps: {
+        'ability': abilityItem
+      }
+    });
+    return await modal.present();
   }
 
 }

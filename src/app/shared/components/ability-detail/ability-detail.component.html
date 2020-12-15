@@ -1,0 +1,20 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>{{ability.ability.name | titlecase}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ng-container *ngIf="loading; else noLoading">
+    <app-skeleton-text> </app-skeleton-text>
+  </ng-container>
+  <ng-template #noLoading>
+    <div class="ability-description-container">
+      <h1>{{ descriptions.effect }}</h1>
+      <hr>
+      <h3>{{ descriptions.short_effect }}</h3>
+    </div>
+  </ng-template>
+</ion-content>
