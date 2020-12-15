@@ -1,0 +1,74 @@
+@import "../../../../theme/colors.scss";
+
+.type-label-container {
+  width: 90px;
+  height: 45px;
+  border: 1px solid black;
+  border-radius: 20px;
+  position: relative;
+}
+
+.type-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg-label-normal-color {
+  background-color: $color-label-normal;
+}
+.bg-label-fighting-color {
+  background-color: $color-label-fighting;
+}
+.bg-label-flying-color {
+  background-color: $color-label-flying;
+}
+.bg-label-poison-color {
+  background-color: $color-label-poison;
+}
+.bg-label-ground-color {
+  background-color: $color-label-ground;
+}
+.bg-label-rock-color {
+  background-color: $color-label-rock;
+}
+.bg-label-bug-color {
+  background-color: $color-label-bug;
+}
+.bg-label-ghost-color {
+  background-color: $color-label-ghost;
+}
+.bg-label-steel-color {
+  background-color: $color-label-steel;
+}
+.bg-label-fire-color {
+  background-color: $color-label-fire;
+}
+.bg-label-water-color {
+  background-color: $color-label-water;
+}
+.bg-label-grass-color {
+  background-color: $color-label-grass;
+}
+.bg-label-electric-color {
+  background-color: $color-label-electric;
+}
+.bg-label-psychic-color {
+  background-color: $color-label-psychic;
+}
+.bg-label-ice-color {
+  background-color: $color-label-ice;
+}
+.bg-label-dragon-color {
+  background-color: $color-label-dragon;
+}
+.bg-label-dark-color {
+  background-color: $color-label-dark;
+}
+.bg-label-fairy-color {
+  background-color: $color-label-fairy;
+}
+.bg-label-unknown-color {
+  background-color: $color-label-unknown;
+}

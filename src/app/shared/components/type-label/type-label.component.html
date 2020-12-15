@@ -1,3 +1,5 @@
-<p>
-  type-label works!
-</p>
+<div [ngClass]="['type-label-container', getLabelClass()]">
+  <div class="type-label">
+    <b>{{typeName}}</b>
+  </div>
+</div>

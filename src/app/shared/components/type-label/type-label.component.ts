@@ -8,10 +8,12 @@ import { NamedAPIResource } from 'src/app/models/NamedAPIResource';
 })
 export class TypeLabelComponent implements OnInit {
 
-  @Input('type') type: NamedAPIResource;
+  @Input('typeName') typeName: NamedAPIResource;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
+  getLabelClass = () => `bg-label-${this.typeName}-color`;
 }
