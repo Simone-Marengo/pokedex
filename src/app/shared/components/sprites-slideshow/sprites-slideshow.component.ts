@@ -8,6 +8,12 @@ import { PokemonSprites } from 'src/app/models/PokemonSprites';
 })
 export class SpritesSlideshowComponent implements OnInit {
 
+  /*
+   * handle the images in the Sprites gived by the get on pokemon
+   * other list and versions
+   * handle the view to switch between the lists
+   */
+
   @Input('sprites') sprites: PokemonSprites;
   @Input('image') singleImage: string;
 

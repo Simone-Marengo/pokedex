@@ -10,9 +10,12 @@ import { CustomToastsService } from 'src/app/shared/services/custom-toasts.servi
   styleUrls: ['./pokemon-detail.page.scss'],
 })
 export class PokemonDetailPage implements OnInit {
+
   public folder: string = "";
   public loading: boolean = true;
   public pokemon: Pokemon;
+
+  public detailLabels = ['id', 'weight', 'height'];
 
   constructor(
     private _route: ActivatedRoute,

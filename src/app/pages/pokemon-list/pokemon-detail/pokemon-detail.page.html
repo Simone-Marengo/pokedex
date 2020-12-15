@@ -19,23 +19,21 @@
             <app-skeleton-text> </app-skeleton-text>
         </ng-container>
         <ng-template #noLoading>
-            <ion-grid>
-                <ion-row class="ion-justify-content-around">
-                    <ion-col size="3">
-                        <div>
-                            <!-- first column -->
-                            <ion-text color="dark">
-                                <h1>#{{pokemon.id}}</h1>
-                            </ion-text>
-                        </div>
-                    </ion-col>
-                    <ion-col size="3">
-                        <div>
-                            <!-- second column -->
-                        </div>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
+
+            <ion-list>
+                <ion-item lines="none" *ngFor="let detailLabel of detailLabels">
+                    {{detailLabel | titlecase}}:
+                    <ion-label slot="end">
+                        <h1>{{pokemon[detailLabel]}}</h1>
+                    </ion-label>
+                </ion-item>
+                <ion-item lines="none">
+                    <ng-container *ngFor="let itemType of pokemon.types">
+                        <!-- <app-type-label [type]="itemType.type"> </app-type-label> -->
+                    </ng-container>
+                </ion-item>
+            </ion-list>
+
             <div class="ion-padding-horizontal">
                 <app-sprites-slideshow [sprites]="pokemon.sprites"> </app-sprites-slideshow>
             </div>

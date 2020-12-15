@@ -14,7 +14,8 @@ import { SharedModule } from './shared/services/shared-module.module';
 export function HttpLoaderFactory(http: HttpClient) {
   return new MultiTranslateHttpLoader(http, [
     { prefix: "../../../assets/i18n/toasts/", suffix: ".json" },
-    { prefix: "../../../assets/i18n/generics/", suffix: ".json" }
+    { prefix: "../../../assets/i18n/generics/", suffix: ".json" },
+    { prefix: "../../../assets/i18n/slideshow/", suffix: ".json" }
   ]);
 };
 
