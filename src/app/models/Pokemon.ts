@@ -25,4 +25,34 @@ export class Pokemon {
     species: NamedAPIResource;
     stats: PokemonStat[];
     types: PokemonType[];
+
+    // TODO: implement a modelmapper
+    constructor(pokemon: Pokemon) { 
+        for (const property in pokemon) {
+            this[property] = pokemon[property];
+        }
+        this.name = this.capitalizeFirstNameLetter(this.name);
+        this.sortSprites();
+    }
+
+    private sortSprites() {
+        const backSpriteStartLetters = "back";
+        let tmpBackSprites = {};
+        for (const property in this.sprites) {
+            if (property.startsWith(backSpriteStartLetters)) {
+                tmpBackSprites[property] = this.sprites[property];
+                delete this.sprites[property];
+            }
+        }
+        for (const property in tmpBackSprites) {
+            this.sprites[property] = tmpBackSprites[property];
+        }
+
+    }
+
+    // TODO: centralize this method
+    private capitalizeFirstNameLetter(name: string): string {
+        return name.charAt(0).toUpperCase() + name.slice(1);
+    }
+
 }

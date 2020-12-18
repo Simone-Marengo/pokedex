@@ -40,6 +40,8 @@ export class PokemonDetailPage implements OnInit {
             this.pokemon = await this._pokemonService
               .getPokemon(id)
               .toPromise();
+
+            this.pokemon = new Pokemon(this.pokemon);
             this.folder = `Detail of ${this.pokemon.name}`;
             this.loading = false;
           }
