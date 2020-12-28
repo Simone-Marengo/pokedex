@@ -23,7 +23,7 @@
                 <ion-list>
                     <ion-item *ngFor="let pokemon of pokemons">
                         <ion-label [routerLink]="['detail/' + pokemon.id]" routerLinkActive="router-link-active">
-                            {{ pokemon.name | titlecase}}
+                            <app-pokemon-label [pokemon]="pokemon"></app-pokemon-label>
                         </ion-label>
                     </ion-item>
                 </ion-list>

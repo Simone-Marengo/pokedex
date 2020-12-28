@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "serve-custom-host": "ng run app:serve --host=0.0.0.0 --port=8100 --disable-host-check"
   },
   "private": true,
   "dependencies": {

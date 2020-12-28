@@ -1,0 +1,11 @@
+<ion-grid>
+  <ion-row class="ion-align-items-center">
+      <ion-col>
+          {{ pokemon.id }}.
+          {{ pokemon.name | titlecase}}
+      </ion-col>
+      <ion-col *ngFor="let itemType of pokemon.types">
+          <app-type-label [typeName]="itemType.type.name"> </app-type-label>
+      </ion-col>
+    </ion-row>
+</ion-grid>
