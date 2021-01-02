@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { NamedAPIResource } from './NamedAPIResource';
 import { PokemonAbility } from './PokemonAbility';
 import { PokemonHeldItem } from './PokemonHeldItem';
@@ -31,8 +32,8 @@ export class Pokemon {
         for (const property in pokemon) {
             this[property] = pokemon[property];
         }
-        this.name = this.capitalizeFirstNameLetter(this.name);
         this.sortSprites();
+        this.sprites.teamSprite = environment.getPokemonDbUrl(this.name);
     }
 
     private sortSprites() {
@@ -48,11 +49,6 @@ export class Pokemon {
             this.sprites[property] = tmpBackSprites[property];
         }
 
-    }
-
-    // TODO: centralize this method
-    private capitalizeFirstNameLetter(name: string): string {
-        return name.charAt(0).toUpperCase() + name.slice(1);
     }
 
 }

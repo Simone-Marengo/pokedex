@@ -5,7 +5,12 @@
 export const environment = {
   production: false,
   apiUrl: "https://pokeapi.co/api/v2/",
-  listLimit: 25
+  listLimit: 25,
+
+  getPokemonDbUrl(pokemonName, version?): string {
+    version = version ? version : "bank"
+    return `https://img.pokemondb.net/sprites/${version}/normal/${pokemonName}.png`
+  }
 };
 
 /*
