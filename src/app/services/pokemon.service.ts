@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Ability } from '../models/Ability';
 import { Characteristic } from '../models/Characteristic';
@@ -26,42 +25,42 @@ import * as Pokedex from "pokedex-promise-v2";
 })
 export class PokemonService {
 
+    // Any function with the designation "ByName" can also be passed an integer ID. 
     pokedex = new Pokedex();
 
     constructor(
         private _http: HttpClient
     ) { }
 
-    public getAbility(idOrName: number | string): Observable<Ability> {
-        return this._http.get<Ability>(`${environment.apiUrl}ability/${idOrName}`);
+    public getAbility(idOrName: number | string): Promise<Ability> {
+        return this.pokedex.getAbilityByName(idOrName);
     }
 
-    public getCharacteristic(id: number): Observable<Characteristic> {
-        return this._http.get<Characteristic>(`${environment.apiUrl}characteristic/${id}`);
+    public getCharacteristic(id: number): Promise<Characteristic> {
+        return this.pokedex.getCharacteristicById(id);
     }
 
-    public getEggGroup(idOrName: number | string): Observable<EggGroup> {
-        return this._http.get<EggGroup>(`${environment.apiUrl}egg-group/${idOrName}`);
+    public getEggGroup(idOrName: number | string): Promise<EggGroup> {
+        return this.pokedex.getEggGroupByName(idOrName);
     }
 
-    public getGender(idOrName: number | string): Observable<Gender> {
-        return this._http.get<Gender>(`${environment.apiUrl}gender/${idOrName}`);
+    public getGender(idOrName: number | string): Promise<Gender> {
+        return this.pokedex.getEggGenderByName(idOrName);
     }
 
-    public getGrowthRate(idOrName: number | string): Observable<GrowthRate> {
-        return this._http.get<GrowthRate>(`${environment.apiUrl}growth-rate/${idOrName}`);
+    public getGrowthRate(idOrName: number | string): Promise<GrowthRate> {
+        return this.pokedex.getGrowthRateByName(idOrName);
     }
 
-    public getNature(idOrName: number | string): Observable<Nature> {
-        return this._http.get<Nature>(`${environment.apiUrl}nature/${idOrName}`);
+    public getNature(idOrName: number | string): Promise<Nature> {
+        return this.pokedex.getNatureByName(idOrName);
     }
 
-    public getPokeathlonStat(idOrName: number | string): Observable<PokeathlonStat> {
-        return this._http.get<PokeathlonStat>(`${environment.apiUrl}pokeathlon-stat/${idOrName}`);
+    public getPokeathlonStat(idOrName: number | string): Promise<PokeathlonStat> {
+        return this.pokedex.getPokeathlonStatByName(idOrName);
     }
 
     public getPokemon(idOrName: number | string): Promise<Pokemon> { 
-        // Any function with the designation "ByName" can also be passed an integer ID. 
         return this.pokedex.getPokemonByName(idOrName);
     }
 
@@ -69,35 +68,35 @@ export class PokemonService {
         return this.pokedex.getPokemonsList({ limit: environment.listLimit, offset: page });
     }
 
-    public getPokemonLocationArea(idOrName: number | string): Observable<LocationAreaEncounter> {
-        return this._http.get<LocationAreaEncounter>(`${environment.apiUrl}pokemon/${idOrName}/encounters`);
+    public getPokemonLocationArea(idOrName: number | string): Promise<LocationAreaEncounter> {
+        return this.pokedex.getLocationAreaByName(idOrName);
     }
 
-    public getPokemonColor(idOrName: number | string): Observable<PokemonColor> {
-        return this._http.get<PokemonColor>(`${environment.apiUrl}pokemon-color/${idOrName}`);
+    public getPokemonColor(idOrName: number | string): Promise<PokemonColor> {
+        return this.pokedex.getPokemonColorByName(idOrName);
     }
 
-    public getPokemonForm(idOrName: number | string): Observable<PokemonForm> {
-        return this._http.get<PokemonForm>(`${environment.apiUrl}pokemon-form/${idOrName}`);
+    public getPokemonForm(idOrName: number | string): Promise<PokemonForm> {
+        return this.pokedex.getPokemonFormByName(idOrName); 
     }
 
-    public getPokemonHabitat(idOrName: number | string): Observable<PokemonHabitat> {
-        return this._http.get<PokemonHabitat>(`${environment.apiUrl}pokemon-habitat/${idOrName}`);
+    public getPokemonHabitat(idOrName: number | string): Promise<PokemonHabitat> {
+        return this.pokedex.getPokemonHabitatByName(idOrName); 
     }
 
-    public getPokemonShape(idOrName: number | string): Observable<PokemonShape> {
-        return this._http.get<PokemonShape>(`${environment.apiUrl}pokemon-shape/${idOrName}`);
+    public getPokemonShape(idOrName: number | string): Promise<PokemonShape> {
+        return this.pokedex.getPokemonShapeByName(idOrName); 
     }
 
-    public getPokemonSpecies(idOrName: number | string): Observable<PokemonSpecies> {
-        return this._http.get<PokemonSpecies>(`${environment.apiUrl}pokemon-species/${idOrName}`);
+    public getPokemonSpecies(idOrName: number | string): Promise<PokemonSpecies> {
+        return this.pokedex.getPokemonSpeciesByName(idOrName); 
     }
 
-    public getStat(idOrName: number | string): Observable<Stat> {
-        return this._http.get<Stat>(`${environment.apiUrl}stat/${idOrName}`);
+    public getStat(idOrName: number | string): Promise<Stat> {
+        return this.pokedex.getStatByName(idOrName);
     }
 
-    public getType(idOrName: number | string): Observable<Type> {
-        return this._http.get<Type>(`${environment.apiUrl}type/${idOrName}`);
+    public getType(idOrName: number | string): Promise<Type> {
+        return this.pokedex.getTypeByName(idOrName);
     }
 }
