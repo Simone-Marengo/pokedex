@@ -61,6 +61,7 @@ export class PokemonService {
     }
 
     public getPokemon(idOrName: number | string): Promise<Pokemon> { 
+        // Any function with the designation "ByName" can also be passed an integer ID. 
         return this.pokedex.getPokemonByName(idOrName);
     }
 
