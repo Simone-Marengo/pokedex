@@ -9,6 +9,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MultiTranslateHttpLoader } from "ngx-translate-multi-http-loader";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { PokedexPromiseProvider } from "./shared/providers/pokedex-promise.provider";
 import { SharedModule } from './shared/services/shared-module.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
