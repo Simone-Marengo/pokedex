@@ -19,11 +19,14 @@ import { PokemonShape } from '../models/PokemonShape';
 import { PokemonSpecies } from '../models/PokemonSpecies';
 import { Stat } from '../models/Stat';
 import { Type } from '../models/Type';
+import * as Pokedex from "pokedex-promise-v2";
 
 @Injectable({
     providedIn: 'root'
 })
 export class PokemonService {
+
+    pokedex = new Pokedex();
 
     constructor(
         private _http: HttpClient
@@ -57,12 +60,12 @@ export class PokemonService {
         return this._http.get<PokeathlonStat>(`${environment.apiUrl}pokeathlon-stat/${idOrName}`);
     }
 
-    public getPokemon(idOrName: number | string): Observable<Pokemon> {
-        return this._http.get<Pokemon>(`${environment.apiUrl}pokemon/${idOrName}`);
+    public getPokemon(idOrName: number | string): Promise<Pokemon> { 
+        return this.pokedex.getPokemonByName(idOrName);
     }
 
-    public getPokemonListed(page: number): Observable<NamesAPIResourseList> {
-        return this._http.get<NamesAPIResourseList>(`${environment.apiUrl}pokemon/?limit=${environment.listLimit}&offset=${page}`);
+    public getPokemonListed(page: number): Promise<NamesAPIResourseList> {
+        return this.pokedex.getPokemonsList({ limit: environment.listLimit, offset: page });
     }
 
     public getPokemonLocationArea(idOrName: number | string): Observable<LocationAreaEncounter> {

@@ -33,7 +33,7 @@ export class Pokemon {
             this[property] = pokemon[property];
         }
         this.sortSprites();
-        this.sprites.teamSprite = environment.getPokemonDbUrl(this.name);
+        this.sprites.labelSprite = environment.getPokemonDbUrl(this.name);
     }
 
     private sortSprites() {

@@ -38,9 +38,7 @@ export class PokemonDetailPage implements OnInit {
           if (params) {
             const { id } = params;
             this.pokemon = await this._pokemonService
-              .getPokemon(id)
-              .toPromise();
-
+              .getPokemon(id);
             this.pokemon = new Pokemon(this.pokemon);
             this.folder = `Detail of ${this.pokemon.name}`;
             this.loading = false;

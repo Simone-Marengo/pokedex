@@ -7,5 +7,5 @@ export class PokemonSprites {
     back_shiny: string;
     back_female: string;
     back_shiny_female: string;
-    teamSprite: string // retrieved from an external service
+    labelSprite: string // retrieved from an external service
 }

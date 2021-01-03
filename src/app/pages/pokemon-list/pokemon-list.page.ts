@@ -29,7 +29,6 @@ export class PokemonListPage implements OnInit {
       if (!this.noMoreResults) {
         this._pokemonService
           .getPokemonListed(pageNumber ? pageNumber : this.pokemons.length)
-          .toPromise()
           .then(async (response) => {
             this._loadPokemonsById(response, event);
           });
@@ -48,7 +47,7 @@ export class PokemonListPage implements OnInit {
         let pokemonToBeAdded: Array<Pokemon> = [];
         for (let pokemon of response.results) {
           pokemonToBeAdded.push(
-            await this._pokemonService.getPokemon(pokemon.name).toPromise()
+            new Pokemon(await this._pokemonService.getPokemon(pokemon.name))
           );
         }
         this.pokemons = this.pokemons.concat(pokemonToBeAdded);
