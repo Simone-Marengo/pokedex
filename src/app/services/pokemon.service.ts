@@ -18,19 +18,20 @@ import { PokemonShape } from '../models/PokemonShape';
 import { PokemonSpecies } from '../models/PokemonSpecies';
 import { Stat } from '../models/Stat';
 import { Type } from '../models/Type';
-import * as Pokedex from "pokedex-promise-v2";
+import { SharedService } from '../shared/services/shared.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PokemonService {
+    
+    constructor(
+        private _http: HttpClient,
+        private sharedService: SharedService
+    ) { }
 
     // Any function with the designation "ByName" can also be passed an integer ID. 
-    pokedex = new Pokedex();
-
-    constructor(
-        private _http: HttpClient
-    ) { }
+    private pokedex = this.sharedService.getPokedex();
 
     public getAbility(idOrName: number | string): Promise<Ability> {
         return this.pokedex.getAbilityByName(idOrName);
